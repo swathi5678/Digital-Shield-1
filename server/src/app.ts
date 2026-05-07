@@ -23,7 +23,7 @@ app.use(express.json());
 
 // Initialize database
 initializeDatabase();
-const db = getDatabase();
+getDatabase();
 
 // Routes
 app.use('/api/auth', authRoutes);
@@ -51,7 +51,11 @@ app.use((err: any, req: Request, res: Response, next: any) => {
 
 const PORT = process.env.PORT || 3001;
 
-app.listen(PORT, () => {
-  console.log(`✓ Digital Shield server running on http://localhost:${PORT}`);
-  console.log(`✓ API available at http://localhost:${PORT}/api`);
-});
+if (process.env.VERCEL !== '1') {
+  app.listen(PORT, () => {
+    console.log(`Digital Shield server running on http://localhost:${PORT}`);
+    console.log(`API available at http://localhost:${PORT}/api`);
+  });
+}
+
+export default app;
