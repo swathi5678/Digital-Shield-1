@@ -6,8 +6,7 @@
     "dev": "concurrently \"cd server && npm run dev\" \"cd client && npm run dev\"",
     "seed": "cd server && npm run seed",
     "setup": "npm run install:all && npm run seed",
-    "vercel-build": "npm run bundle:api && npm run build --prefix client",
-    "bundle:api": "node_modules/.bin/esbuild api/index.ts --bundle --platform=node --target=node20 --outfile=api/index.js --external:@aws-sdk/* --external:sharp"
+    "vercel-build": "npm run build --prefix client"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
