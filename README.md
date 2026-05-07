@@ -51,7 +51,7 @@ PORT=3001
 NODE_ENV=development
 DATABASE_PATH=./data/digital-shield.db
 ```
-
+.
 ## Project Structure
 
 ```
