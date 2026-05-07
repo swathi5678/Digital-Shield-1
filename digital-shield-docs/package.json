@@ -1,0 +1,12 @@
+{
+  "name": "digital-shield-docs",
+  "version": "1.0.0",
+  "scripts": {
+    "generate": "node generate-docx.js && node generate-diagrams.js",
+    "docx": "node generate-docx.js",
+    "diagrams": "node generate-diagrams.js"
+  },
+  "dependencies": {
+    "docx": "^8.5.0"
+  }
+}

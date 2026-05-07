@@ -1,0 +1,13 @@
+{
+  "name": "digital-shield",
+  "private": true,
+  "scripts": {
+    "install:all": "cd server && npm install && cd ../client && npm install",
+    "dev": "concurrently \"cd server && npm run dev\" \"cd client && npm run dev\"",
+    "seed": "cd server && npm run seed",
+    "setup": "npm run install:all && npm run seed"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

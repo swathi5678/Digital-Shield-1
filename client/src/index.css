@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-slate-950 text-gray-100;
+}
+
+a {
+  @apply text-shield-accent hover:text-purple-400 transition-colors;
+}
+
+code {
+  @apply bg-slate-900 px-2 py-1 rounded text-sm font-mono;
+}
+
+pre {
+  @apply bg-slate-900 p-4 rounded-lg overflow-x-auto;
+}
+
+html.light body {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+html.light .bg-slate-950 {
+  background-color: #f8fafc !important;
+}
+
+html.light .bg-shield-sidebar,
+html.light .bg-slate-900 {
+  background-color: #ffffff !important;
+}
+
+html.light .bg-slate-800 {
+  background-color: #f1f5f9 !important;
+}
+
+html.light .bg-slate-700,
+html.light .bg-slate-600 {
+  background-color: #e2e8f0 !important;
+}
+
+html.light .hover\:bg-slate-900:hover {
+  background-color: #f8fafc !important;
+}
+
+html.light .hover\:bg-slate-800:hover,
+html.light .hover\:bg-slate-700:hover {
+  background-color: #e2e8f0 !important;
+}
+
+html.light .border-slate-800,
+html.light .border-slate-700,
+html.light .border-slate-600 {
+  border-color: #cbd5e1 !important;
+}
+
+html.light .text-white,
+html.light .text-gray-100,
+html.light .text-gray-200,
+html.light .text-gray-300 {
+  color: #0f172a !important;
+}
+
+html.light .text-gray-400 {
+  color: #64748b !important;
+}
+
+html.light .text-gray-500 {
+  color: #475569 !important;
+}
+
+html.light .placeholder-gray-500::placeholder {
+  color: #94a3b8 !important;
+}
+
+html.light .bg-shield-accent,
+html.light .hover\:bg-purple-500:hover {
+  color: #ffffff !important;
+}
+
+html.light .bg-red-600,
+html.light .bg-blue-600,
+html.light .bg-purple-600,
+html.light .bg-gray-600 {
+  color: #ffffff !important;
+}
+
+html.light .bg-shield-accent.bg-opacity-20,
+html.light .bg-shield-accent.bg-opacity-20 * {
+  color: #6c3bff !important;
+}
+
+html.light .recharts-cartesian-axis-tick-value,
+html.light .recharts-legend-item-text,
+html.light .recharts-text {
+  fill: #475569 !important;
+  color: #475569 !important;
+}
+
+html.light .recharts-cartesian-grid line {
+  stroke: #e2e8f0 !important;
+}
+
+html.light .recharts-tooltip-wrapper {
+  color: #0f172a !important;
+}
+
+html.light input,
+html.light textarea,
+html.light select {
+  color: #0f172a;
+}
+
+html.light code,
+html.light pre {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}

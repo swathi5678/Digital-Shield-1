@@ -1,0 +1,61 @@
+graph TD
+    subgraph PRESENTATION["Presentation Layer"]
+        UI["React 18 + TypeScript + Vite"]
+        CHARTS["Recharts · Lucide Icons"]
+        STATE["Zustand State Store"]
+    end
+
+    subgraph CLIENT_SVC["Client Services"]
+        ROUTER["React Router v6"]
+        AXIOS["Axios HTTP Client"]
+        HOOKS["Custom Hooks<br/>useAIAnalysis · useSecurityData"]
+    end
+
+    subgraph API["API Gateway (Express · Port 3001)"]
+        AUTH_MW["JWT Middleware"]
+        RBAC["RBAC Role Guard"]
+        ROUTES["REST Routes<br/>15 Endpoints"]
+    end
+
+    subgraph ENGINES["Security Intelligence Engines"]
+        AIE["AIE<br/>Authorization Intelligence"]
+        SCG["SCG<br/>Secure Code Guardian"]
+        TDSL["TDSL<br/>Test Data Sovereignty"]
+        CPM["CPM<br/>Compliance Posture"]
+        BAS["BAS<br/>Behavioral Sentinel"]
+        AGL["AGL<br/>Agent Ledger"]
+    end
+
+    subgraph AI["AI Layer"]
+        O4MINI["OpenAI o4-mini<br/>5 analysis modes"]
+        O3["OpenAI o3<br/>2 reasoning modes"]
+    end
+
+    subgraph DATA["Data Layer"]
+        DB["SQLite · better-sqlite3<br/>8 Tables · 140+ seed records"]
+    end
+
+    subgraph KTERN["KTern.AI Modules Integration"]
+        MAPS["Digital Maps"]
+        LABS["Digital Labs"]
+        PROJ["Digital Projects"]
+        MINES["Digital Mines"]
+        AGENTS["AI Agent Space"]
+    end
+
+    UI --> ROUTER
+    ROUTER --> AXIOS
+    CHARTS --> UI
+    STATE --> UI
+    AXIOS -->|HTTP/JSON| ROUTES
+    ROUTES --> AUTH_MW --> RBAC
+    RBAC --> AIE & SCG & TDSL & CPM & BAS & AGL
+    AIE & SCG & TDSL & CPM & BAS & AGL --> DB
+    AIE & SCG & TDSL & CPM & BAS & AGL -->|AI request| O4MINI
+    CPM & AIE -->|complex reasoning| O3
+    MAPS -->|role objects · ABAP code| AIE & SCG
+    LABS -->|test datasets| TDSL & SCG
+    PROJ -->|milestone data| CPM
+    MINES -->|DevOps telemetry| BAS
+    AGENTS -->|execution context| AGL
+    AUTH_MW -->|token validation| STATE

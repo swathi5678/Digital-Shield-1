@@ -1,0 +1,30 @@
+sequenceDiagram
+    participant U as User (Browser)
+    participant V as Vite Dev Server :5173
+    participant E as Express API :3001
+    participant DB as SQLite Database
+    participant AI as OpenAI API
+
+    U->>V: Load React App
+    V-->>U: Bundle served
+    U->>E: POST /api/auth/login
+    E->>DB: SELECT * FROM users WHERE email = ?
+    DB-->>E: User record + password hash
+    E-->>U: JWT token + user object
+
+    Note over U,E: All subsequent requests include Authorization: Bearer <token>
+
+    U->>E: GET /api/projects/:id/auth-findings
+    E->>DB: SELECT * FROM auth_findings WHERE project_id = ?
+    DB-->>E: Finding rows (AIE SoD violations)
+    E-->>U: { data: [...findings], meta: { total, page } }
+
+    U->>E: POST /api/ai/analyze { mode: remediation_plan, context: {...} }
+    E->>AI: chat.completions.create (model: o3, max_completion_tokens: 1500)
+    AI-->>E: { choices: [{ message: { content: "..." } }] }
+    E-->>U: { analysis: "...", model: "o3", tokens_used: 892 }
+
+    U->>E: GET /api/projects/:id/agent-ledger
+    E->>DB: SELECT * FROM agent_ledger WHERE project_id = ? ORDER BY executed_at DESC
+    DB-->>E: Ledger entries (AIE agent actions)
+    E-->>U: { ledger: [...entries], meta: { total } }

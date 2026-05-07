@@ -1,0 +1,115 @@
+erDiagram
+    PROJECTS {
+        text id PK
+        text name
+        text client
+        text migration_type
+        text source_system
+        text target_system
+        text phase
+        int overall_risk_score
+        int compliance_score
+        int created_at
+        int go_live_date
+    }
+    USERS {
+        text id PK
+        text email UK
+        text name
+        text password_hash
+        text role
+        text project_id FK
+        int last_login
+        int created_at
+    }
+    AUTH_FINDINGS {
+        text id PK
+        text project_id FK
+        text finding_type
+        text severity
+        text role_name
+        text tcode_1
+        text tcode_2
+        int user_count
+        text status
+        text remediation_plan
+        int detected_at
+    }
+    CODE_FINDINGS {
+        text id PK
+        text project_id FK
+        text object_name
+        text object_type
+        text finding_type
+        text severity
+        int line_number
+        text code_snippet
+        real cvss_score
+        text cwe_id
+        text status
+        text ai_fix
+        int detected_at
+    }
+    DATA_FINDINGS {
+        text id PK
+        text project_id FK
+        text dataset_name
+        text table_name
+        text field_name
+        text pii_type
+        text regulation
+        int record_count
+        int masked
+        text masking_status
+        int detected_at
+    }
+    COMPLIANCE_CONTROLS {
+        text id PK
+        text project_id FK
+        text framework
+        text control_id
+        text control_name
+        text status
+        text evidence
+        int findings_mapped
+        int findings_resolved
+        int last_assessed
+    }
+    BEHAVIORAL_ALERTS {
+        text id PK
+        text project_id FK
+        text user_name
+        text alert_type
+        text description
+        text severity
+        int risk_score
+        text status
+        text investigation_notes
+        int occurred_at
+    }
+    AGENT_LEDGER {
+        text id PK
+        text project_id FK
+        text agent_name
+        text agent_version
+        text triggering_user
+        text action_type
+        text target_object
+        text target_system
+        text data_fields_accessed
+        text intended_outcome
+        text execution_status
+        int records_affected
+        text risk_level
+        text hash
+        text hash_parent
+        int executed_at
+    }
+
+    PROJECTS ||--o{ USERS : "belongs to"
+    PROJECTS ||--o{ AUTH_FINDINGS : "has"
+    PROJECTS ||--o{ CODE_FINDINGS : "has"
+    PROJECTS ||--o{ DATA_FINDINGS : "has"
+    PROJECTS ||--o{ COMPLIANCE_CONTROLS : "has"
+    PROJECTS ||--o{ BEHAVIORAL_ALERTS : "has"
+    PROJECTS ||--o{ AGENT_LEDGER : "has"
