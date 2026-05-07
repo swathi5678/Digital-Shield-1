@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { MockDatabase } from '../db/schema';
+import { MockDatabase } from '../db/schema.js';
 
 export interface AgrUser {
   uname: string;
