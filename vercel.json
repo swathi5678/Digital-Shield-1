@@ -4,8 +4,8 @@
   "buildCommand": "npm run vercel-build",
   "outputDirectory": "client/dist",
   "functions": {
-    "api/index.ts": {
-      "includeFiles": "dist/server/**,server/node_modules/**"
+    "api/index.js": {
+      "maxDuration": 30
     }
   },
   "rewrites": [
