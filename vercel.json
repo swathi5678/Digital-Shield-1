@@ -1,13 +1,8 @@
 {
   "version": 2,
   "installCommand": "npm run install:all",
-  "buildCommand": "npm run build --prefix client",
+  "buildCommand": "npm run vercel-build",
   "outputDirectory": "client/dist",
-  "functions": {
-    "api/index.js": {
-      "includeFiles": "server/src/**,server/node_modules/**"
-    }
-  },
   "rewrites": [
     {
       "source": "/api/(.*)",
